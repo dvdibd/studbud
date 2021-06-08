@@ -1,0 +1,24 @@
+{
+  "name": "studbud",
+  "version": "1.0.0",
+  "description": "Student Study Tool for Students",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dvdibd/studbud.git"
+  },
+  "keywords": [
+    "Study",
+    "online",
+    "help"
+  ],
+  "author": "Atul Dash",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dvdibd/studbud/issues"
+  },
+  "homepage": "https://github.com/dvdibd/studbud#readme"
+}
