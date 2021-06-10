@@ -1,0 +1,62 @@
+// Setting up variables for our HTML elements using DOM selection
+const $dee29b863a82f8c6ed04c9e931513acf$var$form = document.getElementById("taskform");
+const $dee29b863a82f8c6ed04c9e931513acf$var$button = document.querySelector("#taskform > button"); // Complex CSS query
+var $dee29b863a82f8c6ed04c9e931513acf$var$taskInput = document.getElementById("taskInput");
+var $dee29b863a82f8c6ed04c9e931513acf$var$tasklist = document.getElementById("tasklist");
+//const taskInput = document.getElementById("taskInput");
+var $dee29b863a82f8c6ed04c9e931513acf$var$dueDateInput = document.getElementById("dueDateInput");
+var $dee29b863a82f8c6ed04c9e931513acf$var$completionTimeInput = document.getElementById("completionTimeInput");
+var $dee29b863a82f8c6ed04c9e931513acf$var$estimatedTimeInput = document.getElementById("estimatedTimeInput");
+var $dee29b863a82f8c6ed04c9e931513acf$var$priorityInput = document.getElementById("priorityInput");
+// Event listener for Button click
+$dee29b863a82f8c6ed04c9e931513acf$var$button.addEventListener("click", function(event) {
+    event.preventDefault(); // Not as necessary for button, but needed for form submit
+    let task = $dee29b863a82f8c6ed04c9e931513acf$var$taskInput.value;
+    let dueDate = $dee29b863a82f8c6ed04c9e931513acf$var$dueDateInput.value;
+    let completionTime = $dee29b863a82f8c6ed04c9e931513acf$var$completionTimeInput.value;
+    let estimatedTime = $dee29b863a82f8c6ed04c9e931513acf$var$estimatedTimeInput.value;
+    let priorityRating = $dee29b863a82f8c6ed04c9e931513acf$var$priorityInput.options[$dee29b863a82f8c6ed04c9e931513acf$var$priorityInput.selectedIndex];
+    //let date = (new Date()).toLocaleDateString('en-US') //Convert to short date format
+    // Call the addTask() function using
+    $dee29b863a82f8c6ed04c9e931513acf$var$addTask(task, dueDate, estimatedTime, priorityRating, completionTime, false);
+    // Log out the newly populated taskList everytime the button has been pressed
+    console.log(taskList);
+});
+// Create an empty array to store our tasks
+var $dee29b863a82f8c6ed04c9e931513acf$var$taskListArray = [];
+function $dee29b863a82f8c6ed04c9e931513acf$var$addTask(taskDescription, dueDate, priorityRating, estimatedTime, completionTime, completionStatus) {
+    let d = new Date();
+    let dateCreated = d.getFullYear();
+    let task = {
+        taskDescription: taskDescription,
+        dateCreated: dateCreated,
+        dueDate: dueDate,
+        priorityRating: priorityRating,
+        estimatedTime: estimatedTime,
+        completionTime: completionTime,
+        completionStatus: completionStatus
+    };
+    // Add the task to our array of tasks
+    $dee29b863a82f8c6ed04c9e931513acf$var$taskListArray.push(task);
+    // Separate the DOM manipulation from the object creation logic
+    $dee29b863a82f8c6ed04c9e931513acf$var$renderTask(task);
+}
+// Function to display the item on the page
+function $dee29b863a82f8c6ed04c9e931513acf$var$renderTask(task) {
+    let item = document.createElement("li");
+    item.innerHTML = "<p>" + task.taskDescription + "</p>";
+    $dee29b863a82f8c6ed04c9e931513acf$var$tasklist.appendChild(item);
+    // Setup delete button DOM elements
+    let delButton = document.createElement("button");
+    let delButtonText = document.createTextNode("Delete Task");
+    delButton.appendChild(delButtonText);
+    item.appendChild(delButton); // Adds a delete button to every task
+    // Listen for when the 
+    delButton.addEventListener("click", function(event) {
+        event.preventDefault();
+        item.remove(); // Remove the task item from the page when button clicked
+    // Because we used 'let' to define the item, this will always delete the right element
+    });
+    // Clear the value of the input once the task has been added to the page
+    $dee29b863a82f8c6ed04c9e931513acf$var$form.reset();
+}

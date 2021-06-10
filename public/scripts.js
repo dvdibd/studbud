@@ -1,12 +1,13 @@
 // Setting up variables for our HTML elements using DOM selection
 const form = document.getElementById("taskform");
 const button = document.querySelector("#taskform > button"); // Complex CSS query
-//const tasklist = document.getElementById("tasklist");
-//const taskInput = document.getElementById("taskInput");
 var taskInput = document.getElementById("taskInput");
+var tasklist = document.getElementById("tasklist");
+//const taskInput = document.getElementById("taskInput");
 var dueDateInput = document.getElementById("dueDateInput");
 var completionTimeInput = document.getElementById("completionTimeInput");
 var estimatedTimeInput = document.getElementById("estimatedTimeInput");
+var priorityInput = document.getElementById("priorityInput");
 
 // Event listener for Button click
 
@@ -15,37 +16,39 @@ button.addEventListener("click", function(event) {
 
   
   let task = taskInput.value;
-  let dueDate = dueDateinput.value;
+  let dueDate = dueDateInput.value;
   let completionTime = completionTimeInput.value;
   let estimatedTime = estimatedTimeInput.value;
+  let priorityRating = priorityInput.options[priorityInput.selectedIndex];
 
   //let date = (new Date()).toLocaleDateString('en-US') //Convert to short date format
 
   // Call the addTask() function using
-  addTask(task, dueDate, estimatedTime, "Low", completionTime, false);
+  addTask(task, dueDate, estimatedTime, priorityRating, completionTime, false);
 
   // Log out the newly populated taskList everytime the button has been pressed
   console.log(taskList);
 })
 
 // Create an empty array to store our tasks
-var taskList = [];
+var taskListArray = [];
 
-function addTask(taskDescription, createdDate, dueDate, priorityRating, estimatedTime, completionStatus) {
+function addTask(taskDescription, dueDate, priorityRating, estimatedTime,completionTime, completionStatus) {
   let d = new Date();
   let dateCreated = d.getFullYear();
 
   let task = {
     taskDescription,
-    createdDate,
+    dateCreated,
     dueDate,
     priorityRating,
     estimatedTime,
+    completionTime,
     completionStatus
   };
 
   // Add the task to our array of tasks
-  taskList.push(task);
+  taskListArray.push(task);
 
   // Separate the DOM manipulation from the object creation logic
   renderTask(task);
@@ -61,12 +64,13 @@ function renderTask(task) {
 
   // Setup delete button DOM elements
   let delButton = document.createElement("button");
-  let delButtonText = document.createTextNode("Delete");
+  let delButtonText = document.createTextNode("Delete Task");
   delButton.appendChild(delButtonText);
   item.appendChild(delButton); // Adds a delete button to every task
 
   // Listen for when the 
   delButton.addEventListener("click", function(event){
+    event.preventDefault();
     item.remove(); // Remove the task item from the page when button clicked
     // Because we used 'let' to define the item, this will always delete the right element
   })
@@ -76,30 +80,3 @@ function renderTask(task) {
 }
 
 
-
-
-// Tabs Format
-
-function openPage(pageName, elmnt, color) {
-  // Hide all elements with class="tabcontent" by default */
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-
-  // Remove the background color of all tablinks/buttons
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].style.backgroundColor = "";
-  }
-
-  // Show the specific tab content
-  document.getElementById(pageName).style.display = "block";
-
-  // Add the specific color to the button used to open the tab content
-  elmnt.style.backgroundColor = color;
-}
-
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();

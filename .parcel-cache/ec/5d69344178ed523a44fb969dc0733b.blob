@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>StudBud</title>
+        <link rel="stylesheet" href="1709979ce1a746dbac218773e80dac19" type="text/css">
+
+    </head>
+    <body>
+        
+        <form id="taskform">
+            <label for="task">Task:</label>
+            <input type="text" name="task" id="taskInput">
+            <!-- Date input -->
+            <label for="dueDate">Due Date: </label>
+            <input type="date" name="dueDate" id="dueDateInput">
+            <br>
+            <!-- Time input -->
+            <label for="completionTime">Completion Time: </label>
+            <input type="time" name="completionTime" id="completionTimeInput">
+
+            <br>
+
+            <label for="estimatedTime">Estimated completion time (in mins):</label>
+            <input type="number" name="estimatedTime" id="estimatedTimeInput">
+            <!-- Priority -->
+            <br>
+
+            <label for="priority">Task Priority:</label>
+            <select name="prority" id="priorityInput">
+                <option value="">Select one</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+
+            <br>
+            
+            
+            <button type="submit">Submit</button>
+        </form>
+        <ul id="tasklist">
+
+        </ul>
+        <!-- spotify playlist embed(Plays DECO2017 playlist) -->
+        <div id="spotifyPlaylist">
+            <iframe src="584aa8a4c46f778c6fc067fc468af79f" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media" style="f1948025a357106ebc9d2c241936d694"></iframe>
+        </div>
+        
+
+        <script src="82cbe4f98fdb7db02946300ec6b25e0c"></script>
+
+    </body>
+</html>
