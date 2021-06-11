@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Merriweather:400,700");
+.app-container {
+  background-color: #b1b1b1;
+  margin: 4em;
+  text-align: center;
+}
 html {
   font-size: 100%;
 }

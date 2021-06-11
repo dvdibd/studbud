@@ -381,6 +381,30 @@ function hmrAcceptRun(bundle/*: ParcelRequire */ , id/*: string */ ) {
 }
 
 },{}],"4B4Nd":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+//--------------------Navigation-------------------------------------
+var _navigation = require("./components/navigation");
+var _navigationDefault = parcelHelpers.interopDefault(_navigation);
+const links = document.querySelectorAll('.top-nav > ul > li > a');
+const pages = document.querySelectorAll('.page-container');
+var nav = new _navigationDefault.default(links, pages);
+//nav.getLinks();
+nav.links.forEach(function(link) {
+    link.addEventListener('click', function() {
+        let pageId = nav.getHash(link);
+        nav.setPage(pageId);
+    });
+});
+const subLinks = document.querySelectorAll('.sub-nav > ul > li > a');
+const subPages = document.querySelectorAll('.sub-page-container');
+var subNav = new _navigationDefault.default(subLinks, subPages);
+subNav.links.forEach((link)=>{
+    link.addEventListener('click', function() {
+        let pageId = subNav.getHash(link);
+        subNav.setPage(pageId);
+    });
+});
+//--------------------TASK LIST SECTION-------------------------------------
 // Setting up variables for our HTML elements using DOM selection
 const form = document.getElementById("taskform");
 const button = document.querySelector("#taskform > button"); // Complex CSS query
@@ -443,6 +467,68 @@ function renderTask(task) {
     // Clear the value of the input once the task has been added to the page
     form.reset();
 }
+
+},{"./components/navigation":"2K1cj","@parcel/transformer-js/src/esmodule-helpers.js":"367CR"}],"2K1cj":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class Navigation {
+    constructor(links, pages){
+        this.links = links;
+        this.pages = pages;
+        this.currentPage = null;
+    }
+    getLinks() {
+        console.log(this.links);
+    }
+    setPage(pageId) {
+        this.currentPage = pageId;
+        console.log(this.currentPage);
+        this.links.forEach((link)=>{
+            link.classList.remove('active');
+            if (this.getHash(link) === pageId) link.classList.add('active');
+        });
+        this.pages.forEach((page)=>{
+            page.style.display = 'none';
+        });
+        document.getElementById(pageId).style.display = "block";
+    }
+    getHash(link) {
+        return link.href.split("#")[1];
+    }
+}
+exports.default = Navigation;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"367CR"}],"367CR":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule') return;
+        // Skip duplicate re-exports when they have the same value.
+        if (key in dest && dest[key] === source[key]) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
 
 },{}]},["7pZ4g","4B4Nd"], "4B4Nd", "parcelRequirec526")
 

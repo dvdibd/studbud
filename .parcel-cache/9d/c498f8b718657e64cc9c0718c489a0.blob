@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>StudBud</title>
+        <link rel="stylesheet" href="ac2b17b88ef0ab3e3e3316d5a6be3892" type="text/css">
+
+    </head>
+    <body class="app-container">
+        
+        <nav class="top-nav">
+            <ul class="nav-links">
+                <li class="nav-item"><a href="#home" class="active">Home</a></li>
+                <li class="nav-item"><a href="#page1">Page 1</a></li>
+                <li class="nav-item"><a href="#page2">Page 2</a></li>
+                <li class="nav-item"><a href="#page3">Page 3</a></li>
+            </ul>
+        </nav>
+
+
+        <form id="taskform">
+            <label for="task">Task:</label>
+            <input type="text" name="task" id="taskInput">
+            <!-- Date input -->
+            <label for="dueDate">Due Date: </label>
+            <input type="date" name="dueDate" id="dueDateInput">
+            <br>
+            <!-- Time input -->
+            <label for="completionTime">Completion Time: </label>
+            <input type="time" name="completionTime" id="completionTimeInput">
+
+            <br>
+
+            <label for="estimatedTime">Estimated completion time (in mins):</label>
+            <input type="number" name="estimatedTime" id="estimatedTimeInput">
+            <!-- Priority -->
+            <br>
+
+            <label for="priority">Task Priority:</label>
+            <select name="prority" id="priorityInput">
+                <option value="">Select one</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+
+            <br>
+            
+            
+            <button type="submit">Submit</button>
+        </form>
+        <ul id="tasklist">
+
+        </ul>
+        <!-- spotify playlist embed(Plays DECO2017 playlist) -->
+        <div id="spotifyPlaylist">
+            <iframe src="584aa8a4c46f778c6fc067fc468af79f" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media" style="a157b115248e7d9197b0ca49e273a668"></iframe>
+        </div>
+        
+
+        <script src="82cbe4f98fdb7db02946300ec6b25e0c"></script>
+
+    </body>
+</html>

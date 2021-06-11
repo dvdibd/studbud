@@ -1,0 +1,13 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class Navigation {
+    constructor(links, pages){
+        this.links = "";
+        this.pages = "";
+        this.currentPage = "";
+    }
+    getLinks() {
+        console.log(this.links);
+    }
+}
+exports.default = Navigation;
