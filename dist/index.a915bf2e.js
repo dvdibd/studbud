@@ -385,6 +385,8 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 //--------------------Navigation-------------------------------------
 var _navigation = require("./components/navigation");
 var _navigationDefault = parcelHelpers.interopDefault(_navigation);
+var _tasklist = require("./components/tasklist");
+var _modal = require("./components/modal");
 const links = document.querySelectorAll('.top-nav > ul > li > a');
 const pages = document.querySelectorAll('.page-container');
 var nav = new _navigationDefault.default(links, pages);
@@ -426,8 +428,8 @@ button.addEventListener("click", function(event) {
     //let date = (new Date()).toLocaleDateString('en-US') //Convert to short date format
     // Call the addTask() function using
     addTask(task, dueDate, estimatedTime, priorityRating, completionTime, false);
-    // Log out the newly populated taskList everytime the button has been pressed
-    console.log(taskList);
+// Log out the newly populated taskList everytime the button has been pressed
+//console.log(taskList);
 });
 // Create an empty array to store our tasks
 var taskListArray = [];
@@ -468,30 +470,37 @@ function renderTask(task) {
     form.reset();
 }
 
-},{"./components/navigation":"2K1cj","@parcel/transformer-js/src/esmodule-helpers.js":"367CR"}],"2K1cj":[function(require,module,exports) {
+},{"./components/navigation":"2K1cj","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","./components/tasklist":"Rj9Cl","./components/modal":"4LxbO"}],"2K1cj":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+// Creating navigation class structure
 class Navigation {
+    // Function to build the object, taking in input paramters when called in script.js
     constructor(links, pages){
         this.links = links;
         this.pages = pages;
         this.currentPage = null;
     }
+    // Output all links from DOM element selector
     getLinks() {
         console.log(this.links);
     }
+    // Set the current page when a user clicks on a link
     setPage(pageId) {
         this.currentPage = pageId;
         console.log(this.currentPage);
+        // Manages state for the current active link 
         this.links.forEach((link)=>{
             link.classList.remove('active');
             if (this.getHash(link) === pageId) link.classList.add('active');
         });
+        // Manages state for the current visible page
         this.pages.forEach((page)=>{
             page.style.display = 'none';
         });
         document.getElementById(pageId).style.display = "block";
     }
+    // Function to separate pageId from URL, using the '#' to split the string
     getHash(link) {
         return link.href.split("#")[1];
     }
@@ -528,6 +537,28 @@ exports.export = function(dest, destName, get) {
         enumerable: true,
         get: get
     });
+};
+
+},{}],"Rj9Cl":[function(require,module,exports) {
+
+},{}],"4LxbO":[function(require,module,exports) {
+// Get the modal
+var modal = document.getElementById("myModal");
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+};
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+};
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) modal.style.display = "none";
 };
 
 },{}]},["7pZ4g","4B4Nd"], "4B4Nd", "parcelRequirec526")

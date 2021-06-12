@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>StudBud</title>
+        <link rel="stylesheet" href="ac2b17b88ef0ab3e3e3316d5a6be3892" type="text/css">
+
+    </head>
+    <body class="app-container">
+        
+        <nav class="vertical top-nav">
+            <ul class="nav-links">
+                <li class="nav-item"><a href="#home" class="active">Home</a></li>
+                <li class="nav-item"><a href="#page1">Page 1</a></li>
+                <li class="nav-item"><a href="#page2">Page 2</a></li>
+                <li class="nav-item"><a href="#page3">Page 3</a></li>
+            </ul>
+        </nav>
+
+        <div id="home" class="page-container">
+            <!-- Trigger/Open The Modal -->
+            <button id="myBtn">Open Modal</button>
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Some text in the Modal..</p>
+                </div>
+
+            </div>
+            
+            <div id="task-grid">
+                <form id="taskform">
+                    <label for="task">Task:</label>
+                    <input type="text" name="task" id="taskInput">
+                    <!-- Date input -->
+                    <label for="dueDate">Due Date: </label>
+                    <input type="date" name="dueDate" id="dueDateInput">
+                    <br>
+                    <!-- Time input -->
+                    <label for="completionTime">Completion Time: </label>
+                    <input type="time" name="completionTime" id="completionTimeInput">
+        
+                    <br>
+        
+                    <label for="estimatedTime">Estimated completion time (in mins):</label>
+                    <input type="number" name="estimatedTime" id="estimatedTimeInput">
+                    <!-- Priority -->
+                    <br>
+        
+                    <label for="priority">Task Priority:</label>
+                    <select name="prority" id="priorityInput">
+                        <option value="">Select one</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+        
+                    <br>
+                    
+                    
+                    <button type="submit">Submit</button>
+                </form>
+                <ul id="tasklist">
+        
+                </ul>
+            </div>
+            
+        </div>
+
+        <div id="page1" class="page-container">
+            <h1>Page 1</h1>
+            <nav class="sub-nav">
+                <ul class="nav-links">
+                    <li class="nav-item"><a href="#page1-1" class="active">Page 1-1</a></li>
+                    <li class="nav-item"><a href="#page1-2">Page 1-2</a></li>
+                </ul>
+            </nav>
+    
+            <div id="page1-1" class="sub-page-container">
+                <h2>Page 1 - 1</h2>
+                <div id="task-grid">
+                    <form id="taskform">
+                        <label for="task">Task:</label>
+                        <input type="text" name="task" id="taskInput" required="">
+    
+                        <!-- Date input -->
+                        <label for="dueDate">Due Date: </label>
+                        <input type="date" name="dueDate" id="dueDateInput">
+    
+                        <!-- Time input -->
+                        <label for="completionTime">Completion Time: </label>
+                        <input type="time" name="completionTime" id="completionTimeInput">
+    
+                        <label for="estimatedTime">Estimated completion time (in mins):</label>
+                        <input type="number" name="estimatedTime" id="estimatedTimeInput">
+                        <!-- Priority -->
+    
+    
+                        <label for="priority">Task Priority:</label>
+                        <select name="prority" id="priorityInput">
+                            <option value="">Select one</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+    
+                        <br>
+    
+                        <button type="submit">Submit</button>
+                    </form>
+                    <div id="tasklist">
+                        <p id="emptyList">You have not added any tasks yet.</p>
+                        <ul></ul>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="page1-2" class="sub-page-container" style="97c5a4419adbb9928dd75b071c99eee8">
+                <h2>Page 1 - 2</h2>
+            </div>
+        </div>
+
+        <div id="page2" class="page-container">
+            <h1>page 2</h1>
+        </div>
+
+        <div id="page3" class="page-container">
+            <h1>page 3</h1>
+        </div>
+
+
+        
+        <!-- spotify playlist embed(Plays DECO2017 playlist) -->
+        <div id="spotifyPlaylist">
+            <iframe src="584aa8a4c46f778c6fc067fc468af79f" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media" style="069470bfba23b73776e16a732ec5be8d"></iframe>
+        </div>
+
+        <script src="82cbe4f98fdb7db02946300ec6b25e0c"></script>
+
+    </body>
+</html>

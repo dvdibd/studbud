@@ -2,6 +2,9 @@
 
 import Navigation from './components/navigation';
 
+import './components/tasklist';
+import './components/modal';
+
 const links = document.querySelectorAll('.top-nav > ul > li > a');
 const pages = document.querySelectorAll('.page-container');
 
@@ -60,7 +63,7 @@ button.addEventListener("click", function(event) {
   addTask(task, dueDate, estimatedTime, priorityRating, completionTime, false);
 
   // Log out the newly populated taskList everytime the button has been pressed
-  console.log(taskList);
+  //console.log(taskList);
 })
 
 // Create an empty array to store our tasks
