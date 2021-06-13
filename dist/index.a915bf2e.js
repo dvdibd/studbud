@@ -415,7 +415,7 @@ subNav.links.forEach((link)=>{
         let pageId = subNav.getHash(link);
         subNav.setPage(pageId);
     });
-}); //Modal off focus
+});
 
 },{"./components/navigation":"2K1cj","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","./components/tasklist":"Rj9Cl","./components/modal":"4LxbO","./components/pomodoro":"2KGxt","./components/reading":"5yTlS","./components/timer":"6s12x","./components/kanban":"3ezuS"}],"2K1cj":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -498,6 +498,12 @@ var dueDateInput = document.getElementById("dueDateInput");
 var completionTimeInput = document.getElementById("completionTimeInput");
 var estimatedTimeInput = document.getElementById("estimatedTimeInput");
 var priorityInput = document.getElementById("priorityInput");
+//find row to append to
+var table = document.getElementById("taskTable");
+for(var i = 0, row; row = table.rows[i]; i++)//iterate through rows
+//rows would be accessed using the "row" variable assigned in the for loop
+var rowNum = i;
+var rowAppend = rowNum - 1;
 // Form submission event listener
 form.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -518,11 +524,9 @@ function addTask(taskDescription, dueDate, estimatedTime, priorityRating, comple
         id: Date.now(),
         taskDescription,
         dueDate,
-        dateCreated,
         estimatedTime,
         completionTime,
         priorityRating,
-        estimatedTime,
         completionStatus
     };
     taskListArray.push(task);
@@ -536,11 +540,29 @@ function renderTask(task) {
     // Create HTML elements
     let item = document.createElement("li");
     item.setAttribute('data-id', task.id);
-    item.innerHTML = "<p>" + task.taskDescription + "</p>" + task.dueDate + "</p>" + task.dateCreated + "</p>" + task.estimatedTime + "</p>" + task.completionTime + "</p>" + task.priorityRating + "</p>" + task.completionStatus;
+    //item.innerHTML = "<p>" + task.taskDescription + "</p>" + task.dueDate +"</p>" +task.estimatedTime+ "</p>" +task.completionTime+ "</p>" +task.priorityRating+ "</p>" +"Not Done"; 
     tasklist.appendChild(item);
+    //append tasklist in row 
+    var table1 = document.getElementById("taskTable");
+    var row1 = table1.insertRow(rowAppend);
+    var cell1 = row1.insertCell(0);
+    var cell2 = row1.insertCell(1);
+    var cell3 = row1.insertCell(2);
+    var cell4 = row1.insertCell(3);
+    var cell5 = row1.insertCell(4);
+    var cell6 = row1.insertCell(5);
+    var cell7 = row1.insertCell(6);
+    cell1.innerHTML = task.taskDescription;
+    cell2.innerHTML = task.dueDate;
+    cell3.innerHTML = task.estimatedTime;
+    cell4.innerHTML = task.completionTime;
+    cell5.innerHTML = task.priorityRating;
+    cell6.innerHTML = "Not Done";
+    cell7.innerHTML = "Not Done";
+    var tasknum = rowNum - 1;
     // Extra Task DOM elements
     let delButton = document.createElement("button");
-    let delButtonText = document.createTextNode("Delete Task");
+    let delButtonText = document.createTextNode("Task Done");
     delButton.appendChild(delButtonText);
     item.appendChild(delButton);
     // Event Listeners for DOM elements
@@ -553,9 +575,13 @@ function renderTask(task) {
         console.log(taskListArray);
         updateEmpty();
         item.remove();
+        myDeleteFunction(tasknum);
     });
     // Clear the input form
     form.reset();
+}
+function myDeleteFunction(num) {
+    document.getElementById("taskTable").deleteRow(num);
 }
 // Function to remove item from array
 function removeItemFromArray(arr, index) {
@@ -569,24 +595,6 @@ function updateEmpty() {
 }
 
 },{}],"4LxbO":[function(require,module,exports) {
-// Get the modal
-var modal = document.getElementById("myModal");
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-    modal.style.display = "block";
-};
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-};
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) modal.style.display = "none";
-};
 
 },{}],"2KGxt":[function(require,module,exports) {
 // refrenced from https://codepen.io/thomasvaeth/pen/QjwPgz

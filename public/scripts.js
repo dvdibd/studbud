@@ -41,6 +41,3 @@ subNav.links.forEach((link) => {
         subNav.setPage(pageId);
     })
 })
-
-//Modal off focus
-
