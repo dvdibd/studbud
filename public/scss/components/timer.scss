@@ -1,14 +1,82 @@
-#timer {
-    font-size:150px;
-    margin:0 auto;
-    width:1000px;
+/*refrenced from https://codepen.io/grdgc/pen/PowNjVO*/
+#timer-container {
+    position: absolute;
+    top: 40%;
+    left: 35%;
+    right: 5%;
+    
 }
-  
+
+#timer {
+    font-size:50px;
+    margin:0 auto;
+    width:70%;
+}
+
 #controls {
     margin:0 auto;
-    width:600px;    
+    width:65%; 
 }
   
 #controls button {
     font-size:24px;
+}
+
+@media only screen and (max-width: 600px) {
+    #timer-container {
+        position: absolute;
+        top: 40%;
+        left: 35%;
+        right: 5%;
+        
+    }
+    
+    #timer {
+        font-size:30px;
+        margin:0 auto;
+        width:70%;
+    }
+    
+    #controls {
+        margin:0 auto;
+        width:70%; 
+    }
+      
+    #controls button {
+        font-size:12px;
+    }
+}
+
+.start-button {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+}
+
+.stop-button {
+    background-color: #f44336;
+    color: white;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+}
+
+.reset-button {
+    border-radius: 8px;
+    transition-duration: 0.4s;
+}
+
+.start-button:hover {
+    background-color: white; 
+    color: black;
+}
+
+.stop-button:hover {
+    background-color: white; 
+    color: black;
+}
+
+.reset-button:hover {
+    background-color: black; 
+    color: white;
 }

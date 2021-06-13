@@ -1,12 +1,34 @@
 
 /* refrenced from https://codepen.io/flosing/pen/VwpLQXr */
+
+.kanban-box {
+    width: 100%;
+    height: 700px;
+    
+
+    overflow-x: scroll;
+    overflow-y: scroll;
+
+}
+@media only screen and (max-width: 600px) {
+    .kanban-box {
+        width: 100%;
+        height: 540px;
+        margin-left: auto;
+        margin-right: auto;
+        overflow-x: scroll;
+        overflow-y: scroll;
+    
+    }
+}
 .kanban-container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     overflow: scroll;
     padding-top: 20px;
-    padding-left: 15%;
+    justify-content: center;
+    
 }
 
 .list {
@@ -74,3 +96,4 @@
     color: #eee;
     font-size: .8em; 
 }
+

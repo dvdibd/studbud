@@ -1,4 +1,4 @@
-//refrenced from https://albert-gonzalez.github.io/easytimer.js/
+//refrenced from https://codepen.io/grdgc/pen/PowNjVO
 var hours =0;
 var mins =0;
 var seconds =0;

@@ -192,7 +192,7 @@ nav.vertical .nav-links .nav-item a {
 a,
 a:focus,
 a:hover {
-  color: #fff;
+  color: black;
 }
 button:focus {
   outline: 0 !important;
@@ -202,8 +202,8 @@ button:focus {
 .btn-default:focus {
   color: #333;
   text-shadow: none;
-  background-color: #fff;
-  border: 1px solid #fff;
+  background-color: white;
+  border: 2px solid black;
 }
 .task,
 .break,
@@ -211,13 +211,26 @@ button:focus {
   font-size: 144px;
   font-weight: 600;
 }
-#pomodoroTimer body {
-  height: 100%;
-  background-size: cover;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+@media only screen and (max-width: 600px) {
+  .task,
+.break,
+.clock {
+    font-size: 44px;
+    font-weight: 600;
+  }
+
+  .inner {
+    padding: 20px;
+  }
+
+  .cover {
+    padding: 0 10px;
+  }
+
+  .cover .btn-lg {
+    padding: 5px 10px;
+    font-weight: bold;
+  }
 }
 .site-wrapper {
   display: table;
@@ -231,6 +244,8 @@ button:focus {
 .site-wrapper-inner {
   display: table-cell;
   vertical-align: top;
+  justify-content: center;
+  width: 100%;
 }
 .cover-container {
   margin-right: auto;
@@ -261,13 +276,29 @@ button:focus {
   }
 }
 /* refrenced from https://codepen.io/flosing/pen/VwpLQXr */
+.kanban-box {
+  width: 100%;
+  height: 700px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+@media only screen and (max-width: 600px) {
+  .kanban-box {
+    width: 100%;
+    height: 540px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: scroll;
+    overflow-y: scroll;
+  }
+}
 .kanban-container {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   overflow: scroll;
   padding-top: 20px;
-  padding-left: 15%;
+  justify-content: center;
 }
 .list {
   display: flex;
@@ -328,5 +359,75 @@ button:focus {
   background-color: #212121;
   color: #eee;
   font-size: 0.8em;
+}
+/*refrenced from https://codepen.io/grdgc/pen/PowNjVO*/
+#timer-container {
+  position: absolute;
+  top: 40%;
+  left: 35%;
+  right: 5%;
+}
+#timer {
+  font-size: 50px;
+  margin: 0 auto;
+  width: 70%;
+}
+#controls {
+  margin: 0 auto;
+  width: 65%;
+}
+#controls button {
+  font-size: 24px;
+}
+@media only screen and (max-width: 600px) {
+  #timer-container {
+    position: absolute;
+    top: 40%;
+    left: 35%;
+    right: 5%;
+  }
+
+  #timer {
+    font-size: 30px;
+    margin: 0 auto;
+    width: 70%;
+  }
+
+  #controls {
+    margin: 0 auto;
+    width: 70%;
+  }
+
+  #controls button {
+    font-size: 12px;
+  }
+}
+.start-button {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
+.stop-button {
+  background-color: #f44336;
+  color: white;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
+.reset-button {
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
+.start-button:hover {
+  background-color: white;
+  color: black;
+}
+.stop-button:hover {
+  background-color: white;
+  color: black;
+}
+.reset-button:hover {
+  background-color: black;
+  color: white;
 }
 /*# sourceMappingURL=index.099a3fa1.css.map */

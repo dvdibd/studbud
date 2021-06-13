@@ -1,0 +1,401 @@
+/* https://www.digitalocean.com/community/tutorials/css-minimal-css-reset */
+@import url("https://fonts.googleapis.com/css?family=Merriweather:400,700");
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+ol,
+ul {
+  list-style: none;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.app-container {
+  background-color: #d3d4d9;
+  padding-left: 120px;
+}
+.page-container {
+  margin: 4em;
+}
+.page-container#home {
+  text-align: center;
+}
+.page-container:not(#home) {
+  display: none;
+}
+html {
+  font-size: 100%;
+}
+/*16px*/
+body {
+  background: white;
+  font-family: "Merriweather", serif;
+  font-weight: 400;
+  line-height: 1.75;
+  color: #000000;
+}
+p {
+  margin-bottom: 1rem;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 3rem 0 1.38rem;
+  font-family: "Merriweather", serif;
+  font-weight: 700;
+  line-height: 1.3;
+}
+h1 {
+  margin-top: 0;
+  font-size: 3.052rem;
+}
+h2 {
+  font-size: 2.441rem;
+}
+h3 {
+  font-size: 1.953rem;
+}
+h4 {
+  font-size: 1.563rem;
+}
+h5 {
+  font-size: 1.25rem;
+}
+small,
+.text_small {
+  font-size: 0.8rem;
+}
+nav {
+  width: 100%;
+  background-color: #175874;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+nav .nav-links {
+  list-style: none;
+  display: flex;
+}
+nav .nav-links .nav-item a {
+  display: inline-block;
+  text-decoration: none;
+  color: #c8e2ff;
+  padding: 1em;
+}
+nav .nav-links .nav-item a:hover {
+  color: white;
+}
+nav .nav-links .nav-item a.active {
+  font-weight: bold;
+}
+nav.vertical {
+  width: 100px;
+  height: 100%;
+  background-color: #012b3d;
+  flex-direction: row;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+nav.vertical .nav-links {
+  flex-direction: column;
+}
+nav.vertical .nav-links .nav-item a {
+  display: block;
+  padding: 4em 0;
+}
+/* The Modal (background) */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  /* Could be more or less, depending on screen size */
+}
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* refrenced from https://codepen.io/thomasvaeth/pen/QjwPgz */
+.break,
+.start-task,
+.start-break,
+.stop,
+.reset,
+.set-break,
+.add-break,
+.subtract-break,
+.information {
+  display: none;
+}
+.add-task,
+.subtract-task,
+.add-break,
+.subtract-break {
+  margin-top: 5px;
+}
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+button:focus {
+  outline: 0 !important;
+}
+.btn-default,
+.btn-default:hover,
+.btn-default:focus {
+  color: #333;
+  text-shadow: none;
+  background-color: #fff;
+  border: 1px solid #fff;
+}
+.task,
+.break,
+.clock {
+  font-size: 144px;
+  font-weight: 600;
+}
+.site-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%;
+  /* For at least Firefox */
+  min-height: 100%;
+  -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+}
+.site-wrapper-inner {
+  display: table-cell;
+  vertical-align: top;
+}
+.cover-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+.inner {
+  padding: 30px;
+}
+.cover {
+  padding: 0 20px;
+}
+.cover .btn-lg {
+  padding: 10px 20px;
+  font-weight: bold;
+}
+@media (min-width: 768px) {
+  .site-wrapper-inner {
+    vertical-align: middle;
+  }
+
+  .cover-container {
+    width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  .cover-container {
+    width: 700px;
+  }
+}
+/* refrenced from https://codepen.io/flosing/pen/VwpLQXr */
+.kanban-box {
+  width: 100%;
+  height: 540px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+.kanban-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  overflow: scroll;
+  padding-top: 20px;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+  min-height: 300px;
+  max-height: 100%;
+  overflow-y: auto;
+  margin: 5px;
+  padding: 5px;
+  padding-bottom: 15px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: #161616;
+  box-shadow: 0 0 8px 0 #161616;
+  font-family: Verdana;
+}
+.list h3 {
+  color: #eee;
+  font-size: 1.1em;
+  font-weight: normal;
+  padding-bottom: 8px;
+  padding-top: 8px;
+}
+.list-entry {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 80px;
+  margin: 2px 0;
+  padding: 8px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #212121;
+  color: #eee;
+  font-size: 0.8em;
+}
+.list-entry .list-entry {
+  min-height: 40px;
+  border: 1px solid white;
+}
+.list-entry:active {
+  position: relative;
+  transform: rotate(-1.5deg);
+  cursor: move;
+  opacity: 0.7;
+}
+.tmp-entry {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 80px;
+  max-height: 80px;
+  margin: 2px 0;
+  padding: 8px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #212121;
+  color: #eee;
+  font-size: 0.8em;
+}
+/*refrenced from https://codepen.io/grdgc/pen/PowNjVO*/
+#timer-container {
+  position: absolute;
+  top: 40%;
+  left: 35%;
+  right: 5%;
+}
+#timer {
+  font-size: 50px;
+  margin: 0 auto;
+  width: 70%;
+}
+#controls {
+  margin: 0 auto;
+  width: 70%;
+}
+#controls button {
+  font-size: 22px;
+}
+@media only screen and (max-width: 600px) {
+  #timer-container {
+    position: absolute;
+    top: 40%;
+    left: 35%;
+    right: 5%;
+  }
+
+  #timer {
+    font-size: 30px;
+    margin: 0 auto;
+    width: 70%;
+  }
+
+  #controls {
+    margin: 0 auto;
+    width: 70%;
+  }
+
+  #controls button {
+    font-size: 12px;
+  }
+}
+.start-button {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
+.stop-button {
+  background-color: #f44336;
+  color: white;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
+.reset-button {
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
+.start-button:hover {
+  background-color: white;
+  color: black;
+}
+.stop-button:hover {
+  background-color: white;
+  color: black;
+}
+.reset-button:hover {
+  background-color: black;
+  color: white;
+}
+/*# sourceMappingURL=index.HASH_REF_21067786851a4f99ffcac156099a3fa1.css.map */

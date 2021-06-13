@@ -71,7 +71,7 @@ $(document).ready(function() {
   var timeSetup;
   
   function taskClock() {
-    $('.clock, .information').css('color', 'white');
+    $('.clock, .information');
     $('.information').text('Left in Task');
     $('.information').show();
     secondsLeft--;
@@ -103,7 +103,7 @@ $(document).ready(function() {
   }
   
   function breakClock() {
-    $('.clock, .information').css('color', 'white');
+    $('.clock, .information');
     $('.information').text('Left in Break');
     $('.information').show();
     secondsLeft--;

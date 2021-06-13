@@ -415,7 +415,7 @@ subNav.links.forEach((link)=>{
         let pageId = subNav.getHash(link);
         subNav.setPage(pageId);
     });
-});
+}); //Modal off focus
 
 },{"./components/navigation":"2K1cj","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","./components/tasklist":"Rj9Cl","./components/modal":"4LxbO","./components/pomodoro":"2KGxt","./components/reading":"5yTlS","./components/timer":"6s12x","./components/kanban":"3ezuS"}],"2K1cj":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -633,7 +633,7 @@ var minutesLeft;
 var secondsLeft = 0;
 var timeSetup;
 function taskClock() {
-    $('.clock, .information').css('color', 'white');
+    $('.clock, .information');
     $('.information').text('Left in Task');
     $('.information').show();
     secondsLeft--;
@@ -657,7 +657,7 @@ function taskClock() {
     }
 }
 function breakClock() {
-    $('.clock, .information').css('color', 'white');
+    $('.clock, .information');
     $('.information').text('Left in Break');
     $('.information').show();
     secondsLeft--;
@@ -715,7 +715,7 @@ $('.stop').on('click', function() {
 },{}],"5yTlS":[function(require,module,exports) {
 
 },{}],"6s12x":[function(require,module,exports) {
-//refrenced from https://albert-gonzalez.github.io/easytimer.js/
+//refrenced from https://codepen.io/grdgc/pen/PowNjVO
 var hours = 0;
 var mins = 0;
 var seconds = 0;

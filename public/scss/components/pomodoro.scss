@@ -22,7 +22,7 @@
 a,
 a:focus,
 a:hover {
-  color: #fff;
+  color: rgb(0, 0, 0);
 }
 
 button:focus {
@@ -34,8 +34,8 @@ button:focus {
 .btn-default:focus {
   color: #333;
   text-shadow: none;
-  background-color: #fff;
-  border: 1px solid #fff;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid black;
 }
 
 .task,
@@ -43,18 +43,30 @@ button:focus {
 .clock {
   font-size: 144px;
   font-weight: 600;
-}
-
-
-#pomodoroTimer body {
-  height: 100%;
   
-  background-size: cover;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
+@media only screen and (max-width: 600px) {
+    .task,
+    .break,
+    .clock {
+        font-size: 44px;
+        font-weight: 600;
+    }
+    .inner {
+        padding: 20px;
+    }
+      
+    .cover {
+        padding: 0 10px;
+    }
+    .cover .btn-lg {
+        padding: 5px 10px;
+        font-weight: bold;
+    }
+    
+}
+
+
 
 .site-wrapper {
   display: table;
@@ -68,6 +80,8 @@ button:focus {
 .site-wrapper-inner {
   display: table-cell;
   vertical-align: top;
+  justify-content: center;
+  width: 100%;
 }
 
 .cover-container {
