@@ -1,0 +1,30 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+// Import as a module
+var _navigation = require("./components/navigation");
+var _navigationDefault = parcelHelpers.interopDefault(_navigation);
+//Import just as JS
+var _tasklist = require("./components/tasklist");
+// DOM elements for links and pages
+const links = document.querySelectorAll('.top-nav > ul > li > a');
+const pages = document.querySelectorAll('.page-container');
+// Instantiate a new instance of the Navigation class using the DOM elements above as parameters
+var nav = new _navigationDefault.default(links, pages);
+// Event listeners for all links
+nav.links.forEach(function(link) {
+    link.addEventListener('click', function() {
+        let pageId = nav.getHash(link);
+        nav.setPage(pageId);
+    });
+});
+// DOM elements for sublinks and subpages
+const subLinks = document.querySelectorAll('.sub-nav > ul > li > a');
+const subPages = document.querySelectorAll('.sub-page-container');
+// Instantiate a new instance of the Navigation class using the DOM elements above as parameters
+var subNav = new _navigationDefault.default(subLinks, subPages);
+// Event listeners for all sub links
+subNav.links.forEach((link)=>{
+    link.addEventListener('click', function() {
+        let pageId = subNav.getHash(link);
+        subNav.setPage(pageId);
+    });
+});

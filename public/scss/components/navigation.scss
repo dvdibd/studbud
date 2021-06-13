@@ -1,19 +1,21 @@
 nav {
     width: 100%;
-    background-color: #123;
+    background-color: rgb(23, 88, 116);
     display: flex;
     justify-content: space-around;
     align-items: center;
+    
+    
     .nav-links {
         list-style: none;
         display: flex;
         .nav-item a {
             display: inline-block;
             text-decoration: none;
-            color: white;
-            padding: 1em 2em;
+            color: rgb(200, 226, 255);
+            padding: 1em ;
             &:hover {
-                color: #abc;
+                color: rgb(255, 255, 255);
             }
             &.active {
                 font-weight: bold;
@@ -23,8 +25,9 @@ nav {
 }
 
 nav.vertical {
-    width: 120px;
-    height: 100vh;
+    width: 100px;
+    height: 100%;
+    background-color: rgb(1, 43, 61);
     flex-direction: row;
     position: absolute;
     left: 0;

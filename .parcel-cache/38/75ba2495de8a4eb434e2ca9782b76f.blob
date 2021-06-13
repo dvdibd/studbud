@@ -1,0 +1,89 @@
+var timerLength = 1500000;
+var timerIntervalID;
+var startResetToggle = 'start';
+var pomosInSet = 0;
+var pomoSets = 0;
+function countdown() {
+    clearCompletedPomoSet();
+    $('.fa-minus').removeClass('active').off();
+    $('.fa-plus').removeClass('active').off();
+    circle.animate(1, {
+        duration: timerLength
+    });
+    timerIntervalID = setInterval(function() {
+        timerLength -= 1000;
+        $('#clock p').text(getFriendlyTimeRemaining);
+        if (timerLength <= 0) {
+            alarmSound.play('beep');
+            clearInterval(timerIntervalID);
+            increasePomosInSet();
+        }
+    }, 1000);
+}
+function getFriendlyTimeRemaining() {
+    var seconds = Math.floor(timerLength / 1000 % 60);
+    var minutes = Math.floor(timerLength / 1000 / 60 % 60);
+    return ('0' + minutes).slice(-2) + " : " + ('0' + seconds).slice(-2);
+}
+/* Progressbar.js - https://github.com/kimmobrunfeldt/progressbar.js#shapesetprogress */ var circle = new ProgressBar.Circle('#clock', {
+    color: '#fff3f2',
+    text: {
+        value: getFriendlyTimeRemaining()
+    },
+    strokeWidth: 5,
+    trailColor: '#FFAFA6',
+    trailWidth: 2
+});
+circle.setText(getFriendlyTimeRemaining());
+/* Howler.js */ var alarmSound = new Howl({
+    urls: [
+        'https://raw.githubusercontent.com/thepeted/chefmonkey/master/assets/beep.mp3'
+    ],
+    sprite: {
+        beep: [
+            0,
+            500
+        ]
+    },
+    loop: true
+});
+/* Start-Reset Button Control */ $('#start-reset').click(function() {
+    if (startResetToggle === 'start') {
+        countdown();
+        $('#start-reset').removeClass('fa-play').addClass('fa-refresh');
+        startResetToggle = 'reset';
+    } else {
+        $('#start-reset').removeClass('fa-refresh').addClass('fa-play');
+        timerLength = 1500000;
+        clearInterval(timerIntervalID);
+        activateTimeControls();
+        circle.set(0);
+        alarmSound.stop();
+        startResetToggle = 'start';
+        circle.setText(getFriendlyTimeRemaining());
+    }
+});
+function activateTimeControls() {
+    $('.fa-plus').addClass('active').click(function() {
+        timerLength += 60000;
+        circle.setText(getFriendlyTimeRemaining());
+    });
+    $('.fa-minus').addClass('active').click(function() {
+        if (timerLength > 60000) {
+            timerLength -= 60000;
+            circle.setText(getFriendlyTimeRemaining());
+        }
+    });
+}
+/* Set-record functionality */ function increasePomosInSet() {
+    pomosInSet += 1;
+    $("li").eq((pomosInSet - 1) % 4).addClass("completed");
+    if (pomosInSet % 4 === 0) {
+        pomoSets += 1;
+        $("#total-sets").text('+' + pomoSets);
+    }
+}
+function clearCompletedPomoSet() {
+    if (pomosInSet % 4 === 0) $("li").removeClass("completed");
+}
+/* on load - setup plus-minus control event-listeners */ activateTimeControls();

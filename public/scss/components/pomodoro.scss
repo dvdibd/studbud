@@ -1,0 +1,103 @@
+
+/* refrenced from https://codepen.io/thomasvaeth/pen/QjwPgz */
+.break, 
+.start-task, 
+.start-break, 
+.stop, 
+.reset, 
+.set-break, 
+.add-break, 
+.subtract-break, 
+.information {
+  display: none;
+}
+
+.add-task,
+.subtract-task,
+.add-break,
+.subtract-break {
+  margin-top: 5px;
+}
+
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+
+button:focus {
+  outline: 0 !important;
+}
+
+.btn-default,
+.btn-default:hover,
+.btn-default:focus {
+  color: #333;
+  text-shadow: none;
+  background-color: #fff;
+  border: 1px solid #fff;
+}
+
+.task,
+.break,
+.clock {
+  font-size: 144px;
+  font-weight: 600;
+}
+
+
+#pomodoroTimer body {
+  height: 100%;
+  
+  background-size: cover;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+
+.site-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%; /* For at least Firefox */
+  min-height: 100%;
+  -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+}
+
+.site-wrapper-inner {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.cover-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.inner {
+  padding: 30px;
+}
+
+.cover {
+  padding: 0 20px;
+}
+.cover .btn-lg {
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .site-wrapper-inner {
+    vertical-align: middle;
+  }
+  .cover-container {
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .cover-container {
+    width: 700px;
+  }
+}

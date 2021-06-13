@@ -382,95 +382,42 @@ function hmrAcceptRun(bundle/*: ParcelRequire */ , id/*: string */ ) {
 
 },{}],"4B4Nd":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-//--------------------Navigation-------------------------------------
+// Import as a module
 var _navigation = require("./components/navigation");
 var _navigationDefault = parcelHelpers.interopDefault(_navigation);
+//Import just as JS
 var _tasklist = require("./components/tasklist");
 var _modal = require("./components/modal");
+var _reading = require("./components/reading");
+var _pomodoro = require("./components/pomodoro");
+var _timer = require("./components/timer");
+var _kanban = require("./components/kanban");
+// DOM elements for links and pages
 const links = document.querySelectorAll('.top-nav > ul > li > a');
 const pages = document.querySelectorAll('.page-container');
+// Instantiate a new instance of the Navigation class using the DOM elements above as parameters
 var nav = new _navigationDefault.default(links, pages);
-//nav.getLinks();
+// Event listeners for all links
 nav.links.forEach(function(link) {
     link.addEventListener('click', function() {
         let pageId = nav.getHash(link);
         nav.setPage(pageId);
     });
 });
+// DOM elements for sublinks and subpages
 const subLinks = document.querySelectorAll('.sub-nav > ul > li > a');
 const subPages = document.querySelectorAll('.sub-page-container');
+// Instantiate a new instance of the Navigation class using the DOM elements above as parameters
 var subNav = new _navigationDefault.default(subLinks, subPages);
+// Event listeners for all sub links
 subNav.links.forEach((link)=>{
     link.addEventListener('click', function() {
         let pageId = subNav.getHash(link);
         subNav.setPage(pageId);
     });
 });
-//--------------------TASK LIST SECTION-------------------------------------
-// Setting up variables for our HTML elements using DOM selection
-const form = document.getElementById("taskform");
-const button = document.querySelector("#taskform > button"); // Complex CSS query
-var taskInput = document.getElementById("taskInput");
-var tasklist = document.getElementById("tasklist");
-//const taskInput = document.getElementById("taskInput");
-var dueDateInput = document.getElementById("dueDateInput");
-var completionTimeInput = document.getElementById("completionTimeInput");
-var estimatedTimeInput = document.getElementById("estimatedTimeInput");
-var priorityInput = document.getElementById("priorityInput");
-// Event listener for Button click
-button.addEventListener("click", function(event) {
-    event.preventDefault(); // Not as necessary for button, but needed for form submit
-    let task = taskInput.value;
-    let dueDate = dueDateInput.value;
-    let completionTime = completionTimeInput.value;
-    let estimatedTime = estimatedTimeInput.value;
-    let priorityRating = priorityInput.options[priorityInput.selectedIndex];
-    //let date = (new Date()).toLocaleDateString('en-US') //Convert to short date format
-    // Call the addTask() function using
-    addTask(task, dueDate, estimatedTime, priorityRating, completionTime, false);
-// Log out the newly populated taskList everytime the button has been pressed
-//console.log(taskList);
-});
-// Create an empty array to store our tasks
-var taskListArray = [];
-function addTask(taskDescription, dueDate, priorityRating, estimatedTime, completionTime, completionStatus) {
-    let d = new Date();
-    let dateCreated = d.getFullYear();
-    let task = {
-        taskDescription,
-        dateCreated,
-        dueDate,
-        priorityRating,
-        estimatedTime,
-        completionTime,
-        completionStatus
-    };
-    // Add the task to our array of tasks
-    taskListArray.push(task);
-    // Separate the DOM manipulation from the object creation logic
-    renderTask(task);
-}
-// Function to display the item on the page
-function renderTask(task) {
-    let item = document.createElement("li");
-    item.innerHTML = "<p>" + task.taskDescription + "</p>";
-    tasklist.appendChild(item);
-    // Setup delete button DOM elements
-    let delButton = document.createElement("button");
-    let delButtonText = document.createTextNode("Delete Task");
-    delButton.appendChild(delButtonText);
-    item.appendChild(delButton); // Adds a delete button to every task
-    // Listen for when the 
-    delButton.addEventListener("click", function(event) {
-        event.preventDefault();
-        item.remove(); // Remove the task item from the page when button clicked
-    // Because we used 'let' to define the item, this will always delete the right element
-    });
-    // Clear the value of the input once the task has been added to the page
-    form.reset();
-}
 
-},{"./components/navigation":"2K1cj","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","./components/tasklist":"Rj9Cl","./components/modal":"4LxbO"}],"2K1cj":[function(require,module,exports) {
+},{"./components/navigation":"2K1cj","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","./components/tasklist":"Rj9Cl","./components/modal":"4LxbO","./components/pomodoro":"2KGxt","./components/reading":"5yTlS","./components/timer":"6s12x","./components/kanban":"3ezuS"}],"2K1cj":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 // Creating navigation class structure
@@ -540,6 +487,86 @@ exports.export = function(dest, destName, get) {
 };
 
 },{}],"Rj9Cl":[function(require,module,exports) {
+// Basic form DOM elements
+const form = document.getElementById("taskform");
+const button = document.querySelector("#taskform > button");
+// Selector for the tasklist output
+var tasklist = document.querySelector("#tasklist > ul");
+// DOM elements for the task input fields
+var taskInput = document.getElementById("taskInput");
+var dueDateInput = document.getElementById("dueDateInput");
+var completionTimeInput = document.getElementById("completionTimeInput");
+var estimatedTimeInput = document.getElementById("estimatedTimeInput");
+var priorityInput = document.getElementById("priorityInput");
+// Form submission event listener
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    let task = taskInput.value;
+    let dueDate = dueDateInput.value;
+    let completionTime = completionTimeInput.value;
+    let estimatedTime = estimatedTimeInput.value;
+    let priorityRating = priorityInput.options[priorityInput.selectedIndex].value;
+    if (task) addTask(task, dueDate, estimatedTime, priorityRating, completionTime, false);
+});
+// Create global array to track tasks
+var taskListArray = [];
+// Function to add task with user inputs as parameters
+function addTask(taskDescription, dueDate, estimatedTime, priorityRating, completionTime, completionStatus) {
+    let d = new Date();
+    let dateCreated = d.getFullYear();
+    let task = {
+        id: Date.now(),
+        taskDescription,
+        dueDate,
+        dateCreated,
+        estimatedTime,
+        completionTime,
+        priorityRating,
+        estimatedTime,
+        completionStatus
+    };
+    taskListArray.push(task);
+    console.log(taskListArray);
+    renderTask(task);
+}
+// Function to display task on screen
+function renderTask(task) {
+    // Call function - checks if a task has been added
+    updateEmpty();
+    // Create HTML elements
+    let item = document.createElement("li");
+    item.setAttribute('data-id', task.id);
+    item.innerHTML = "<p>" + task.taskDescription + "</p>" + task.dueDate + "</p>" + task.dateCreated + "</p>" + task.estimatedTime + "</p>" + task.completionTime + "</p>" + task.priorityRating + "</p>" + task.completionStatus;
+    tasklist.appendChild(item);
+    // Extra Task DOM elements
+    let delButton = document.createElement("button");
+    let delButtonText = document.createTextNode("Delete Task");
+    delButton.appendChild(delButtonText);
+    item.appendChild(delButton);
+    // Event Listeners for DOM elements
+    delButton.addEventListener("click", function(event) {
+        event.preventDefault();
+        let id = event.target.parentElement.getAttribute('data-id');
+        let index = taskListArray.findIndex((task1)=>task1.id === Number(id)
+        );
+        removeItemFromArray(taskListArray, index);
+        console.log(taskListArray);
+        updateEmpty();
+        item.remove();
+    });
+    // Clear the input form
+    form.reset();
+}
+// Function to remove item from array
+function removeItemFromArray(arr, index) {
+    if (index > -1) arr.splice(index, 1);
+    return arr;
+}
+// Function to hide the 'you haven't added any tasks' text
+function updateEmpty() {
+    if (taskListArray.length > 0) document.getElementById('emptyList').style.display = 'none';
+    else document.getElementById('emptyList').style.display = 'block';
+}
 
 },{}],"4LxbO":[function(require,module,exports) {
 // Get the modal
@@ -560,6 +587,251 @@ span.onclick = function() {
 window.onclick = function(event) {
     if (event.target == modal) modal.style.display = "none";
 };
+
+},{}],"2KGxt":[function(require,module,exports) {
+// refrenced from https://codepen.io/thomasvaeth/pen/QjwPgz
+$(document).ready(function() {
+    $('.task').html(taskTimer + clock);
+    $('.break').html('0' + breakTimer + clock);
+});
+var taskTimer = 25;
+var breakTimer = 5;
+var clock = ':00';
+$('.add-task').on('click', function() {
+    taskTimer++;
+    if (taskTimer > 0) $('.set-task, .subtract-task').removeAttr('disabled');
+    if (taskTimer < 10) $('.task').html('0' + taskTimer + clock);
+    else $('.task').html(taskTimer + clock);
+});
+$('.subtract-task').on('click', function() {
+    taskTimer--;
+    if (taskTimer === 0) $('.set-task, .subtract-task').attr('disabled', 'disabled');
+    if (taskTimer < 10) $('.task').html('0' + taskTimer + clock);
+    else $('.task').html(taskTimer + clock);
+});
+$('.set-task').on('click', function() {
+    $('.task, .set-task, .add-task, .subtract-task').hide();
+    $('.break, .set-break, .add-break, .subtract-break').show();
+});
+$('.add-break').on('click', function() {
+    breakTimer++;
+    if (breakTimer > 0) $('.set-break, .subtract-break').removeAttr('disabled');
+    if (breakTimer < 10) $('.break').html('0' + breakTimer + clock);
+    else $('.break').html(breakTimer + clock);
+});
+$('.subtract-break').on('click', function() {
+    breakTimer--;
+    if (breakTimer === 0) $('.set-break, .subtract-break').attr('disabled', 'disabled');
+    if (breakTimer < 10) $('.break').html('0' + breakTimer + clock);
+    else $('.break').html(breakTimer + clock);
+});
+$('.set-break').on('click', function() {
+    $('.break, .set-break, .add-break, .subtract-break').hide();
+    $('.start-task, .task').show();
+});
+var minutesLeft;
+var secondsLeft = 0;
+var timeSetup;
+function taskClock() {
+    $('.clock, .information').css('color', 'white');
+    $('.information').text('Left in Task');
+    $('.information').show();
+    secondsLeft--;
+    if (minutesLeft < 10 && secondsLeft < 10) $('.clock').html('0' + minutesLeft + ':0' + secondsLeft);
+    else if (minutesLeft < 10) $('.clock').html('0' + minutesLeft + ':' + secondsLeft);
+    else if (secondsLeft < 10) $('.clock').html(minutesLeft + ':0' + secondsLeft);
+    else $('.clock').html(minutesLeft + ':' + secondsLeft);
+    if (minutesLeft <= 1 && secondsLeft === 0 || minutesLeft < 1) $('.clock, .information').css('color', 'red');
+    if (secondsLeft < 0) {
+        if (minutesLeft === 0 && secondsLeft < 0) {
+            taskTimer = 0;
+            clearInterval(timeSetup);
+            $('.clock').html('00:00');
+            $('.stop, .information').hide();
+            $('.start-break').show();
+        } else {
+            minutesLeft--;
+            secondsLeft = 60;
+            taskClock();
+        }
+    }
+}
+function breakClock() {
+    $('.clock, .information').css('color', 'white');
+    $('.information').text('Left in Break');
+    $('.information').show();
+    secondsLeft--;
+    if (minutesLeft < 10 && secondsLeft < 10) $('.clock').html('0' + minutesLeft + ':0' + secondsLeft);
+    else if (minutesLeft < 10) $('.clock').html('0' + minutesLeft + ':' + secondsLeft);
+    else if (secondsLeft < 10) $('.clock').html(minutesLeft + ':0' + secondsLeft);
+    else $('.clock').html(minutesLeft + ':' + secondsLeft);
+    if (minutesLeft <= 1 && secondsLeft === 0 || minutesLeft < 1) $('.clock, .information').css('color', 'red');
+    if (secondsLeft < 0) {
+        if (minutesLeft === 0 && secondsLeft < 0) {
+            taskTimer = 0;
+            clearInterval(timeSetup);
+            $('.clock').html('00:00');
+            $('.information').hide();
+            $('.stop').text('Reset');
+        } else {
+            minutesLeft--;
+            secondsLeft = 60;
+            breakClock();
+        }
+    }
+}
+$('.start-task').on('click', function() {
+    $('.task, .start-task, .subtract-break').hide();
+    $('.clock, .stop').show();
+    timeSetup = setInterval(function() {
+        taskClock();
+    }, 1000);
+    minutesLeft = taskTimer;
+    taskClock();
+});
+$('.start-break').on('click', function() {
+    $('.task, .start-break, .subtract-break').hide();
+    $('.clock, .stop').show();
+    timeSetup = setInterval(function() {
+        breakClock();
+    }, 1000);
+    minutesLeft = breakTimer;
+    breakClock();
+});
+$('.stop').on('click', function() {
+    $('.stop, .clock, .information').hide();
+    $('.stop').text('Stop');
+    $('.task, .set-task, .add-task, .subtract-task').show();
+    clearInterval(timeSetup);
+    taskTimer = 25;
+    $('.task').html(taskTimer + clock);
+    breakTimer = 5;
+    $('.break').html('0' + breakTimer + clock);
+    minutesLeft = taskTimer;
+    secondsLeft = 0;
+    $('.clock').html('');
+});
+
+},{}],"5yTlS":[function(require,module,exports) {
+
+},{}],"6s12x":[function(require,module,exports) {
+//refrenced from https://albert-gonzalez.github.io/easytimer.js/
+var hours = 0;
+var mins = 0;
+var seconds = 0;
+$('#start').click(function() {
+    startTimer();
+});
+$('#stop').click(function() {
+    clearTimeout(timex);
+});
+$('#reset').click(function() {
+    hours = 0;
+    mins = 0;
+    seconds = 0;
+    $('#hours', '#mins').html('00:');
+    $('#seconds').html('00');
+});
+function startTimer() {
+    timex = setTimeout(function() {
+        seconds++;
+        if (seconds > 59) {
+            seconds = 0;
+            mins++;
+            if (mins > 59) {
+                mins = 0;
+                hours++;
+                if (hours < 10) $("#hours").text('0' + hours + ':');
+                else $("#hours").text(hours + ':');
+            }
+            if (mins < 10) $("#mins").text('0' + mins + ':');
+            else $("#mins").text(mins + ':');
+        }
+        if (seconds < 10) $("#seconds").text('0' + seconds);
+        else $("#seconds").text(seconds);
+        startTimer();
+    }, 1000);
+}
+
+},{}],"3ezuS":[function(require,module,exports) {
+// refrenced from https://codepen.io/flosing/pen/VwpLQXr
+const items = [
+    {
+        "name": "To Do",
+        "items": [
+            "Weekly task 1",
+            "DECO2017 Assignment",
+            "Leetcode",
+            "Hackerrank java",
+            "Hackerrank stats"
+        ]
+    },
+    {
+        "name": "In Progress",
+        "items": [
+            "Assignment 1",
+            "Assignment 2"
+        ]
+    },
+    {
+        "name": "Done",
+        "items": [
+            "Report",
+            "Meeting notes"
+        ]
+    }
+];
+const listTable = document.getElementById('list-table');
+const dragStart = (ev)=>{
+    ev.dataTransfer.setData("application/app", ev.target.id);
+    ev.dataTransfer.effectAllowed = "move";
+    ev.dataTransfer.setDragImage(new Image(), 0, 0);
+};
+const dragDrop = (ev)=>{
+    ev.preventDefault();
+    const data = ev.dataTransfer.getData("application/app");
+    const child = document.getElementById(data);
+    child.style.position = 'static';
+    child.style.maxWidth = '100%';
+    ev.target.appendChild(document.getElementById(data));
+};
+const dragOver = (ev)=>{
+    ev.preventDefault();
+    ev.dataTransfer.dropEffect = "move";
+    const data = ev.dataTransfer.getData("application/app");
+    const child = document.getElementById(data);
+    child.style.maxWidth = child.clientWidth + 'px';
+    child.style.position = 'absolute';
+    child.style.top = ev.clientY + 'px';
+    child.style.left = ev.clientX + 'px';
+};
+const addEl = (item)=>{
+    var newListElement = document.createElement('div');
+    var newHeadlineElement = document.createElement('h3');
+    var newHeadlineTextNode = document.createTextNode(item.name);
+    newHeadlineElement.appendChild(newHeadlineTextNode);
+    newListElement.id = item.name.replace(" ", "");
+    newListElement.classList.add('list');
+    newListElement.appendChild(newHeadlineElement);
+    newListElement.addEventListener('drop', (ev)=>dragDrop(ev)
+    );
+    newListElement.addEventListener('dragover', (ev)=>dragOver(ev)
+    );
+    listTable.appendChild(newListElement);
+    item.items.forEach((iteme)=>{
+        var entry = document.createElement('div');
+        var entryContent = document.createTextNode(iteme);
+        entry.id = iteme.replace(" ", "");
+        entry.classList.add('list-entry');
+        entry.appendChild(entryContent);
+        entry.draggable = true;
+        entry.addEventListener('dragstart', (ev)=>dragStart(ev)
+        );
+        newListElement.appendChild(entry);
+    });
+};
+items.forEach((item)=>addEl(item)
+);
 
 },{}]},["7pZ4g","4B4Nd"], "4B4Nd", "parcelRequirec526")
 

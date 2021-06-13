@@ -1,0 +1,78 @@
+var breakLabel = 5;
+var sessionLabel = 25;
+var seconds = 0;
+var audio = new Audio('https://dl.dropboxusercontent.com/u/3090659/Public%20Assets/196106__aiwha__ding.wav');
+var countDown = function() {
+    seconds--;
+    $('.seconds').text(seconds);
+    // Test for Completed Session
+    if (seconds == -1 && $('.timer-label').text() == "Session") {
+        // Start Break
+        seconds = breakLabel * 60;
+        $('.seconds').text(seconds);
+        audio.play();
+        $('.timer-label').text("Break");
+    }
+    // Test for Completed Break
+    if (seconds == -1 && $('.timer-label').text() == "Break") {
+        // Start Session
+        seconds = sessionLabel * 60;
+        $('.seconds').text(seconds);
+        audio.play();
+        $('.timer-label').text("Session");
+    }
+};
+$(".start").on("click", function() {
+    // Disabling / Enabling Buttons
+    $('.start').prop('disabled', true);
+    $('.stop').prop('disabled', false);
+    $('.break-up').prop('disabled', true);
+    $('.break-down').prop('disabled', true);
+    $('.session-up').prop('disabled', true);
+    $('.session-down').prop('disabled', true);
+    // Starting Session and Countdown
+    seconds = sessionLabel * 60;
+    $('.seconds').text(seconds);
+    session = setInterval(countDown, 1000);
+});
+$(".stop").on("click", function() {
+    // Disabling / Enabling Buttons
+    $('.start').prop('disabled', false);
+    $('.stop').prop('disabled', true);
+    $('.break-up').prop('disabled', false);
+    $('.break-down').prop('disabled', false);
+    $('.session-up').prop('disabled', false);
+    $('.session-down').prop('disabled', false);
+    // Reseting Timer
+    $('.timer-label').text('Session');
+    $('.seconds').text(0);
+    clearInterval(session);
+});
+// Changing Break Length
+$(".break-up").on("click", function() {
+    breakLabel++;
+    $(".break-label").text(breakLabel);
+});
+$(".break-down").on("click", function() {
+    breakLabel--;
+    $(".break-label").text(breakLabel);
+    // Limiting Break Length >= 1 Minute
+    if ($('.break-label').text() <= 0) {
+        $('.break-label').text(1);
+        breakLabel = 1;
+    }
+});
+// Changing Session Length
+$(".session-up").on("click", function() {
+    sessionLabel++;
+    $(".session-label").text(sessionLabel);
+});
+$(".session-down").on("click", function() {
+    sessionLabel--;
+    $(".session-label").text(sessionLabel);
+    // Limiting Session Length >= 1 Minute
+    if ($('.session-label').text() <= 0) {
+        $('.session-label').text(1);
+        sessionLabel = 1;
+    }
+});

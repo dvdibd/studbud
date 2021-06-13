@@ -1,0 +1,76 @@
+
+/* refrenced from https://codepen.io/flosing/pen/VwpLQXr */
+.kanban-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    overflow: scroll;
+    padding-top: 20px;
+    padding-left: 15%;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    width: 230px;
+    min-height: 300px;
+    max-height: 100%;
+    overflow-y: auto;
+    margin: 5px;
+    padding: 5px;
+    padding-bottom: 15px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background-color: rgb(22,22,22);
+    box-shadow: 0 0 8px 0 rgb(22,22,22);
+    font-family: Verdana;
+}
+
+.list h3 {
+    color: #eee;
+    font-size: 1.1em;
+    font-weight: normal;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+
+.list-entry {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 80px;
+    margin: 2px 0;
+    padding: 8px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: rgb(33,33,33);
+    color: #eee;
+    font-size: .8em;
+}
+
+.list-entry .list-entry {
+    min-height: 40px;
+    border: 1px solid white;
+}
+
+.list-entry:active {
+    position: relative;
+    transform: rotate(-1.5deg);
+    cursor: move;
+    opacity: .7;
+}
+
+.tmp-entry {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 80px;
+    max-height: 80px;
+    margin: 2px 0;
+    padding: 8px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: rgb(33,33,33);
+    color: #eee;
+    font-size: .8em; 
+}

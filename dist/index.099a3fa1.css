@@ -32,7 +32,7 @@ img {
   height: auto;
 }
 .app-container {
-  background-color: #b1b1b1;
+  background-color: #d3d4d9;
   padding-left: 120px;
 }
 .page-container {
@@ -90,7 +90,7 @@ small,
 }
 nav {
   width: 100%;
-  background-color: #123;
+  background-color: #175874;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -102,18 +102,19 @@ nav .nav-links {
 nav .nav-links .nav-item a {
   display: inline-block;
   text-decoration: none;
-  color: white;
-  padding: 1em 2em;
+  color: #c8e2ff;
+  padding: 1em;
 }
 nav .nav-links .nav-item a:hover {
-  color: #abc;
+  color: white;
 }
 nav .nav-links .nav-item a.active {
   font-weight: bold;
 }
 nav.vertical {
-  width: 120px;
-  height: 100vh;
+  width: 100px;
+  height: 100%;
+  background-color: #012b3d;
   flex-direction: row;
   position: absolute;
   left: 0;
@@ -169,5 +170,163 @@ nav.vertical .nav-links .nav-item a {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+/* refrenced from https://codepen.io/thomasvaeth/pen/QjwPgz */
+.break,
+.start-task,
+.start-break,
+.stop,
+.reset,
+.set-break,
+.add-break,
+.subtract-break,
+.information {
+  display: none;
+}
+.add-task,
+.subtract-task,
+.add-break,
+.subtract-break {
+  margin-top: 5px;
+}
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+button:focus {
+  outline: 0 !important;
+}
+.btn-default,
+.btn-default:hover,
+.btn-default:focus {
+  color: #333;
+  text-shadow: none;
+  background-color: #fff;
+  border: 1px solid #fff;
+}
+.task,
+.break,
+.clock {
+  font-size: 144px;
+  font-weight: 600;
+}
+#pomodoroTimer body {
+  height: 100%;
+  background-size: cover;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+.site-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%;
+  /* For at least Firefox */
+  min-height: 100%;
+  -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+}
+.site-wrapper-inner {
+  display: table-cell;
+  vertical-align: top;
+}
+.cover-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+.inner {
+  padding: 30px;
+}
+.cover {
+  padding: 0 20px;
+}
+.cover .btn-lg {
+  padding: 10px 20px;
+  font-weight: bold;
+}
+@media (min-width: 768px) {
+  .site-wrapper-inner {
+    vertical-align: middle;
+  }
+
+  .cover-container {
+    width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  .cover-container {
+    width: 700px;
+  }
+}
+/* refrenced from https://codepen.io/flosing/pen/VwpLQXr */
+.kanban-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  overflow: scroll;
+  padding-top: 20px;
+  padding-left: 15%;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+  min-height: 300px;
+  max-height: 100%;
+  overflow-y: auto;
+  margin: 5px;
+  padding: 5px;
+  padding-bottom: 15px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: #161616;
+  box-shadow: 0 0 8px 0 #161616;
+  font-family: Verdana;
+}
+.list h3 {
+  color: #eee;
+  font-size: 1.1em;
+  font-weight: normal;
+  padding-bottom: 8px;
+  padding-top: 8px;
+}
+.list-entry {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 80px;
+  margin: 2px 0;
+  padding: 8px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #212121;
+  color: #eee;
+  font-size: 0.8em;
+}
+.list-entry .list-entry {
+  min-height: 40px;
+  border: 1px solid white;
+}
+.list-entry:active {
+  position: relative;
+  transform: rotate(-1.5deg);
+  cursor: move;
+  opacity: 0.7;
+}
+.tmp-entry {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 80px;
+  max-height: 80px;
+  margin: 2px 0;
+  padding: 8px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #212121;
+  color: #eee;
+  font-size: 0.8em;
 }
 /*# sourceMappingURL=index.099a3fa1.css.map */

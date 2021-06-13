@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>studbud</title>
+    <link rel="stylesheet" href="8afc6f90be7b4418570f27e2c7fdcf45">
+  <script src="c067fe3f5f6ec8d2fe52751f2a3e5406"></script>
+  <script src="41a6e376d349a847d6ab61c321e05903"></script>
+    <link href="ac2b17b88ef0ab3e3e3316d5a6be3892" rel="stylesheet" type="text/css">
+</head>
+
+<body class="app-container">
+
+    <nav class="vertical top-nav">
+        <ul class="nav-links">
+            <li class="nav-item"><a href="#home" class="active">Tasks</a></li>
+            <li class="nav-item"><a href="#page1">Reading</a></li>
+            <li class="nav-item"><a href="#page2">Timer</a></li>
+            
+        </ul>
+    </nav>
+
+    <div id="home" class="page-container">
+       
+        <nav class="sub-nav">
+            <ul class="nav-links">
+                <li class="nav-item"><a href="#page1-1" class="active">Task List</a></li>
+                <li class="nav-item"><a href="#page1-2">Kanban Board</a></li>
+            </ul>
+        </nav>
+
+        <div id="page1-1" class="sub-page-container">
+            
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                    <form id="taskform">
+                        <label for="task">Task:</label>
+                        <input type="text" name="task" id="taskInput" required="">
+        
+                        <!-- Date input -->
+                        <label for="dueDate">Due Date: </label>
+                        <input type="date" name="dueDate" id="dueDateInput">
+        
+                        <!-- Time input -->
+                        <label for="completionTime">Completion Time: </label>
+                        <input type="time" name="completionTime" id="completionTimeInput">
+        
+                        <label for="estimatedTime">Estimated completion time (in mins):</label>
+                        <input type="number" name="estimatedTime" id="estimatedTimeInput">
+                        <!-- Priority -->
+        
+        
+                        <label for="priority">Task Priority:</label>
+                        <select name="prority" id="priorityInput">
+                            <option value="">Select one</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+        
+                        <br>
+        
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            
+
+            
+            <div id="task-grid">
+                
+                <div id="tasklist">
+                    <p id="emptyList">You have not added any tasks yet.</p>
+                    <ul></ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="page1-2" class="sub-page-container" style="1a00779ca7524474e48b916426df236b">
+            <h2>Page 1 - 2</h2>
+            <nav class="navbar navbar-default no-margin">
+                <div class="navbar-header fixed-brand">
+                   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" id="menu-toggle">
+                      <span class="fa fa-navicon" aria-hidden="true"></span>
+                   </button>      
+                           <i class="fa fa-globe globe" aria-hidden="true"></i>
+                           <span class="logos">WASHING.IO</span>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                    <li class="active">
+                      <button class="navbar-toggle collapse in" data-toggle="collapse" data-target="#user-block" id="menu-toggle-2"><i class="fa fa-navicon" aria-hidden="true"></i></button>
+                      </li>		
+                           <li class="active"><button title="Log out" class="navbar-toggle collapse in"><i class="icon-lock" aria-hidden="true"></i></button>
+                    </li>
+                  </ul>
+                       <span class="shrikhand2">Kurt Van den Branden</span>
+               </div>
+               </nav>
+               <div id="wrapper">
+                <div id="sidebar-wrapper">
+                  <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+                            <li class="has-user-block">
+                      <div id="user-block" class="collapse in" aria-expanded="true">
+                        <div class="item user-block">
+                           <div class="user-block-picture">
+                             <div class="user-block-status">
+                               <img src="bcb72032852386e03d0d195f87f4d0b0" alt="Avatar" width="60" height="60" class="img-thumbnail img-circle">
+                                  <div class="circle circle-success circle-lg"></div>
+                                </div>
+                              </div>    
+                              <div class="user-block-info">
+                                <span class="user-block-name">Kurt Van den Branden</span> 
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="active">
+                          <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dashboard fa-stack-1x "></i></span>Dashboard</a>
+                          <ul class="nav-pills nav-stacked" style="e310031d4f91c7b90a80339b60989e2f">
+                            <li><a href="#">link1</a></li>
+                            <li><a href="#">link2</a></li>
+                          </ul>
+                        </li>
+                        <li>
+                          <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span> Profile</a>
+                          <ul class="nav-pills nav-stacked" style="5aeef3dfc9b6bae241a5975de80cb7ba">
+                            <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>link1</a>
+                            </li>
+                            <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>link2</a>
+                            </li>
+                          </ul>
+                       </li>
+                       <li>
+                         <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-cloud-download fa-stack-1x "></i></span>Overview</a>
+                       </li>
+                       <li>
+                         <a href="#"> <span class="fa-stack fa-lg pull-left"><i class="fa fa-cart-plus fa-stack-1x "></i></span>Events</a>
+                       </li>
+                       <li>
+                               <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-youtube-play fa-stack-1x "></i></span>About</a>
+                           </li>
+                           <li>
+                               <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-wrench fa-stack-1x "></i></span>Services</a>
+                           </li>
+                           <li>
+                               <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-server fa-stack-1x "></i></span>Contact</a>
+                           </li>
+                       </ul>
+                   </div>
+                   
+                   
+                   <div id="page-content-wrapper">
+                       
+                       
+                       <div class="container-fluid">
+                           <div class="content-heading">
+                              <h3>Project: Kanban Board</h3>
+                              <h6>Description: Commercial project on behalf of washing.io. You can drag and drop lane items to others lanes</h6>
+                           </div>
+                           
+                           <div class="row kanban">
+                           
+                               <div class="col-sm-3 col-md-2">
+                                   <div class="panel-yellow panel">
+                                     <div class="panel-heading">
+                                       <h3 class="panel-title">Not Started</h3>
+                                     </div>
+                                     <div class="panel-body" id="not-started">
+                                       
+                                       <div class="bs-callout" draggable="true" id="task001">
+                                           <div class="btn btn-sm pull-right collapse-btn" data-toggle="collapse" data-target="#registration-form"><i class="fa fa-plus"></i></div>
+                                           <h4 class="title">Registration form</h4>
+                                           <div class="collapse" id="registration-form">
+                                               <p class="text">User registration form should only contain email and password, and automatically redirect to an email verification page. Once the address is verified, the user can access his/her dashboard.</p>
+                                               <h6>Progress</h6>
+                                               <div class="progress">
+                                                   <div class="progress-bar" style="a374833c77a00529a49feca6ed73bd24"></div>
+                                               </div>
+                                               <p>&nbsp;</p>
+                                               <div class="actions">
+                                                   <span class="glyphicon glyphicon-pencil"></span>
+                                                   <span class="glyphicon glyphicon-comment"></span>
+                                                   <span class="glyphicon glyphicon-bell"></span>
+                                                   <span class="glyphicon glyphicon-paperclip"></span>
+                                               </div>
+                                           </div>
+                                       </div>
+                                       
+                                     </div>
+                                     <div class="panel-footer">Panel footer</div>
+                                   </div>
+                               </div>
+                               
+                               
+                               <div class="col-sm-3 col-md-2">
+                                   <div class="panel-blue panel">
+                                     <div class="panel-heading">
+                                       <h3 class="panel-title">In Progress</h3>
+                                     </div>
+                                     <div class="panel-body" id="in-progress">
+                                       
+                                       
+                                           <div class="bs-callout" draggable="true" id="task002">
+                                               <div class="btn btn-sm pull-right collapse-btn" data-toggle="collapse" data-target="#multiple-languages"><i class="fa fa-plus"></i></div>
+                                               <h4 class="title">Multiple Languages</h4>						
+                                               <div class="collapse" id="multiple-languages">
+                                                   <p class="text">Geolocation detection by IP and auto setting the language.</p>
+                                                   
+                                                   <h6>Progress</h6>
+                                                   <div class="progress">
+                                                       <div class="progress-bar" style="d9d0a5d5eb940d0ee376ede254b2145e"></div>
+                                                   </div>
+                                                   
+                                                   <p>&nbsp;</p>
+                                                   <div class="actions">
+                                                       <span class="glyphicon glyphicon-pencil"></span>
+                                                       <span class="glyphicon glyphicon-comment"></span>
+                                                       <span class="glyphicon glyphicon-bell"></span>
+                                                       <span class="glyphicon glyphicon-paperclip"></span>
+                                                   </div>
+                                             </div>
+                                           </div>
+                                       
+                                       
+                                           <div class="bs-callout" draggable="true" id="drag2">
+                                               <div class="btn btn-sm pull-right collapse-btn" data-toggle="collapse" data-target="#demo"><i class="fa fa-minus"></i></div>
+                                               <h4 class="title" style="3bc9bcc6b6a35f041e3ab6f6db64d12a">French Translation</h4>
+                                               <div class="collapse in" id="demo">	
+                                                   <p class="text">The complete website needs to be translated into French. We will use Laundry.js Localize to translate everything on the fly.</p>
+                                                   <div class="progress2">
+                                                       <h6>Progress</h6>
+                                                       <div class="progress">
+                                                           <div class="progress-bar" style="c38489b09bd3ea31aa394d59f0a7988e"></div>
+                                                       </div>
+                                                       <div class="small">Days spent: 1.5</div>
+                                                       <div class="small">Budget: 7</div>
+                                                   </div>
+                                                   <div class="actions">
+                                                       <span class="glyphicon glyphicon-pencil"></span>
+                                                       <span class="glyphicon glyphicon-comment" style="f1386a22ec55ce5b19f7d28302b0a5a3"></span>
+                                                       <span class="glyphicon glyphicon-bell"></span>
+                                                       <span class="glyphicon glyphicon-paperclip"></span>
+                                                   </div>
+                                               </div>	
+                                           </div>
+                                       
+                                       
+                                     </div>
+                                     <div class="panel-footer">
+                                       
+                                       <div class="actions-footer pull-right">
+                                           <span class="glyphicon glyphicon-signal"></span>
+                                           <span class="glyphicon glyphicon-wrench"></span>
+                                           <span class="glyphicon glyphicon-calendar"></span>
+                                       </div>
+                                       Panel footer
+                                     </div>
+                                   </div>
+                               </div>
+                               <div class="col-sm-3 col-md-2">
+                                   <div class="panel-green panel">
+                                     <div class="panel-heading">
+                                       <h3 class="panel-title">Completed</h3>
+                                     </div>
+                                     <div class="panel-body" id="completed">
+                                       
+                                       
+                                           <div class="bs-callout" draggable="true" id="drag3">
+                                             <div class="btn btn-sm pull-right collapse-btn" data-toggle="collapse" data-target="#laundry"><i class="fa fa-minus"></i></div>
+                                               <h4 class="title">Spanish Translation</h4>
+                                               <div class="collapse in" id="laundry">	
+                                                   <p class="text">The complete website needs to be translated into Spanish. We will use Laundry.js Localize to translate everything on the fly.</p>
+                                                   <div class="progress2">
+                                                       <h6>Progress</h6>
+                                                       <div class="progress">
+                                                           <div class="progress-bar" style="4fa3a45d0e81af166a172b57cf46e9b0"></div>
+                                                       </div>
+                                                       <!--
+                                                       <div class="c100 p12 small">
+                                                           <span>12%</span>
+                                                           <div class="slice">
+                                                               <div class="bar"></div>
+                                                               <div class="fill"></div>
+                                                           </div>
+                                                       </div>
+                                                       <div class="small">Days spent: 1.5</div>
+                                                       <div class="small">Budget: 7</div>
+                                                       -->
+                                                   </div>
+                                                   <div class="actions">
+                                                       <span class="glyphicon glyphicon-pencil"></span>
+                                                       <span class="glyphicon glyphicon-comment" style="4b3b60a6c35d3c28d975c3936fa9077c"></span>
+                                                       <span class="glyphicon glyphicon-bell"></span>
+                                                       <span class="glyphicon glyphicon-paperclip"></span>
+                                                   </div>
+                                               </div>	
+                                           </div>
+                                           
+                                       
+                                     </div>
+                                     <div class="panel-footer">Panel footer</div>
+                                   </div>
+                               </div>
+                               
+                               <div class="col-sm-3 col-md-2">
+                                   <div class="panel-orange panel">
+                                     <div class="panel-heading">
+                                       <h3 class="panel-title">Re-opened</h3>
+                                     </div>
+                                     <div class="panel-body" id="re-opened">
+                                       
+                                       <div class="bs-callout" draggable="true" id="task005">
+                                           <div class="btn btn-sm pull-right collapse-btn" data-toggle="collapse" data-target="#reg1"><i class="fa fa-plus"></i></div>
+                                           <h4 class="title">Facebook & Google oauth</h4>
+                                           <div class="collapse" id="reg1">
+                                               <p class="text">New users should be able to register with their google and/or facebook account. Existing users should be able to couple their accounts to a google and/or facebook account.</p>
+                                               <h6>Progress</h6>
+                                               <div class="progress">
+                                                   <div class="progress-bar" style="8ff6a85084e587f374acc2978925e6fc"></div>
+                                               </div>
+                                               <p>&nbsp;</p>
+                                               <div class="actions">
+                                                   <span class="glyphicon glyphicon-pencil"></span>
+                                                   <span class="glyphicon glyphicon-comment"></span>
+                                                   <span class="glyphicon glyphicon-bell"></span>
+                                                   <span class="glyphicon glyphicon-paperclip"></span>
+                                               </div>
+                                           </div>
+                                       </div>
+                                       
+                                     </div>
+                                     <div class="panel-footer">Panel footer</div>
+                                   </div>
+                               </div>
+                               
+                               
+                               <div class="col-sm-3 col-md-2">
+                                   <div class="panel panel-red">
+                                     <div class="panel-heading">
+                                       <h3 class="panel-title">On Hold</h3>
+                                     </div>
+                                     <div class="panel-body">
+                                       
+                                       <div class="bs-callout" draggable="true" id="task006">
+                                           <div class="btn btn-sm pull-right collapse-btn" data-toggle="collapse" data-target="#reg2"><i class="fa fa-plus"></i></div>
+                                           <h4 class="title">Insights &amp; Metrics</h4>
+                                           <div class="collapse" id="reg2">
+                                               <p class="text">Customers can access metrics and insights.</p>
+                                               <h6>Progress</h6>
+                                               <div class="progress">
+                                                   <div class="progress-bar" style="df7aae93a83121d5cff10eb46b7ef306"></div>
+                                               </div>
+                                               <p>&nbsp;</p>
+                                               <div class="actions">
+                                                   <span class="glyphicon glyphicon-pencil"></span>
+                                                   <span class="glyphicon glyphicon-comment"></span>
+                                                   <span class="glyphicon glyphicon-bell"></span>
+                                                   <span class="glyphicon glyphicon-paperclip"></span>
+                                               </div>
+                                           </div>
+                                       </div>
+                                       
+                                     </div>
+                                     <div class="panel-footer">Panel footer</div>
+                                   </div>
+                               </div>
+                               
+                               
+                           </div>
+                       </div>
+                   </div>
+                   <!-- /#page-content-wrapper -->
+               </div>
+           
+               <div class="modal modal-static fade small" id="processing-modal" role="dialog" aria-hidden="true">
+                   <div class="modal-dialog">
+                       <div class="modal-content">
+                           <div class="modal-body">
+                               <div class="text-center">
+                                   <i class="fa fa-refresh fa-5x fa-spin"></i>
+                                   <h4>Processing...</h4>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+             
+        </div>
+        
+    </div>
+
+    <div id="page1" class="page-container">
+        <!-- Trigger/Open The Modal -->
+        <button id="myBtn">Open Modal</button>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Add tasks</p>
+                <form id="reading">
+                    <label for="task">Task:</label>
+                    <input type="text" name="task" id="taskInput" required="">
+
+                    <!-- Date input -->
+                    <label for="dueDate">Due Date: </label>
+                    <input type="date" name="dueDate" id="dueDateInput">
+
+                    <!-- Time input -->
+                    <label for="completionTime">Completion Time: </label>
+                    <input type="time" name="completionTime" id="completionTimeInput">
+
+                    <label for="estimatedTime">Estimated completion time (in mins):</label>
+                    <input type="number" name="estimatedTime" id="estimatedTimeInput">
+                    <!-- Priority -->
+
+
+                    <label for="priority">Task Priority:</label>
+                    <select name="prority" id="priorityInput">
+                        <option value="">Select one</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+
+                    <br>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
+        </div>
+        <div id="task-grid">
+            
+            <div id="readinglist">
+                <p id="emptyList">You have not added any tasks yet.</p>
+                <ul></ul>
+            </div>
+        </div>
+        
+    </div>
+
+    <div id="page2" class="page-container">
+        
+        <nav class="sub-nav">
+            <ul class="nav-links">
+                <li class="nav-item"><a href="#timer" class="active">Timer</a></li>
+                <li class="nav-item"><a href="#pomodoroTimer">Pomodoro</a></li>
+            </ul>
+        </nav>
+
+        <div id="timer" class="sub-page-container">
+            
+            <div id="timer">
+                <span id="hours">00:</span>
+                <span id="mins">00:</span>
+                <span id="seconds">00</span>  
+            </div>
+            <div id="controls">
+                <button id="start">Start</button>
+            <button id="stop">Stop</button>
+            <button id="reset">Reset</button>
+            </div>
+        </div>
+
+        <div id="pomodoroTimer" class="sub-page-container" style="472982e587826147f3013d39920ee9c5">
+            
+            
+        </div>
+    </div>
+
+    <div id="page3" class="page-container">
+        <h1>Page 3</h1>
+    </div>
+
+    <div id="spotifyPlaylist">
+        <iframe src="584aa8a4c46f778c6fc067fc468af79f" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media" style="8f07cffafe3c0d5d295fa33acf7fb611"></iframe>
+    </div>
+
+
+
+    <script src="82cbe4f98fdb7db02946300ec6b25e0c" data-parcel-key="b87c87d4b91d31165f5c9690f82a4aae">
+    </script>
+    
+</body>
+
+</html>
+

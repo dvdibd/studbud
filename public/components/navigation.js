@@ -1,4 +1,3 @@
-
 // Creating navigation class structure
 class Navigation {
 
