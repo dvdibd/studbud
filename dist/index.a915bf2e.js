@@ -538,29 +538,36 @@ function renderTask(task) {
     // Call function - checks if a task has been added
     updateEmpty();
     // Create HTML elements
-    let item = document.createElement("li");
-    item.setAttribute('data-id', task.id);
+    //let item = document.createElement("li");
+    //item.setAttribute('data-id', task.id);
     //item.innerHTML = "<p>" + task.taskDescription + "</p>" + task.dueDate +"</p>" +task.estimatedTime+ "</p>" +task.completionTime+ "</p>" +task.priorityRating+ "</p>" +"Not Done"; 
-    tasklist.appendChild(item);
+    //tasklist.appendChild(item);
+    var tasknum = rowNum - 1;
+    var idAdd = "row" + tasknum;
     //append tasklist in row 
     var table1 = document.getElementById("taskTable");
-    var row1 = table1.insertRow(rowAppend);
+    var row1 = table1.insertRow(tasknum);
+    row1.setAttribute('id', idAdd);
     var cell1 = row1.insertCell(0);
     var cell2 = row1.insertCell(1);
     var cell3 = row1.insertCell(2);
     var cell4 = row1.insertCell(3);
     var cell5 = row1.insertCell(4);
     var cell6 = row1.insertCell(5);
-    var cell7 = row1.insertCell(6);
+    //var cell7 = row.insertCell(6);
     cell1.innerHTML = task.taskDescription;
     cell2.innerHTML = task.dueDate;
     cell3.innerHTML = task.estimatedTime;
     cell4.innerHTML = task.completionTime;
     cell5.innerHTML = task.priorityRating;
     cell6.innerHTML = "Not Done";
-    cell7.innerHTML = "Not Done";
-    var tasknum = rowNum - 1;
-    // Extra Task DOM elements
+    //cell7.innerHTML = "Not Done";
+    var tasklist1 = document.querySelector("#taskTable > tr");
+    let item = document.createElement("td");
+    //item.setAttribute('data-id', task.id);
+    //item.innerHTML = "<p>" + task.taskDescription + "</p>" + task.dueDate +"</p>" +task.estimatedTime+ "</p>" +task.completionTime+ "</p>" +task.priorityRating+ "</p>" +"Not Done"; 
+    tasklist1.appendChild(item);
+    // Extra Task DOM element
     let delButton = document.createElement("button");
     let delButtonText = document.createTextNode("Task Done");
     delButton.appendChild(delButtonText);
