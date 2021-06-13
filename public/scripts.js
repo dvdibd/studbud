@@ -41,3 +41,6 @@ subNav.links.forEach((link) => {
         subNav.setPage(pageId);
     })
 })
+
+
+$('#DyanmicTable').SetEditable({ $addButton: $('#addNewRow')});

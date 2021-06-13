@@ -145,55 +145,50 @@
     </div>
 
     <div id="page1" class="page-container">
-        <!-- Trigger/Open The Modal -->
-        <button id="myBtn">Open Modal</button>
-
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
-
-        <!-- Modal content -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <p>Add tasks</p>
-                <form id="reading">
-                    <label for="task">Task:</label>
-                    <input type="text" name="task" id="taskInput" required="">
-
-                    <!-- Date input -->
-                    <label for="dueDate">Due Date: </label>
-                    <input type="date" name="dueDate" id="dueDateInput">
-
-                    <!-- Time input -->
-                    <label for="completionTime">Completion Time: </label>
-                    <input type="time" name="completionTime" id="completionTimeInput">
-
-                    <label for="estimatedTime">Estimated completion time (in mins):</label>
-                    <input type="number" name="estimatedTime" id="estimatedTimeInput">
-                    <!-- Priority -->
-
-
-                    <label for="priority">Task Priority:</label>
-                    <select name="prority" id="priorityInput">
-                        <option value="">Select one</option>
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="High">High</option>
-                    </select>
-
-                    <br>
-
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
-
-        </div>
-        <div id="task-grid">
-            
-            <div id="readinglist">
-                <p id="emptyList">You have not added any tasks yet.</p>
-                <ul></ul>
-            </div>
-        </div>
+        <!-- Store Links: Functionality for link storage is aimed at computers and not phones as it is expected that most students use a laptop when studying computer science-->
+        <table class="tableRead data">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Link</th>
+                
+                <th>Actions <button class="add">Add new</button></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="data">LeetCode</td>
+                <td class="data">
+                    <a href="https://leetcode.com/">
+                    <div style="height:100%;width:100%
+">
+                        https://leetcode.com/
+                    </div></a></td>
+                
+                <td>
+                  <button class="save">Save</button>
+                  <button class="edit">Edit</button>
+                  <button class="delete">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="data">Hackerrank</td>
+                <td class="data">
+                    <a href="https://www.hackerrank.com/dashboard">
+                    <div style="height:100%;width:100%
+">
+                        https://www.hackerrank.com/dashboard
+                    </div></a></td>
+                
+                <td>
+                  <button class="save">Save</button>
+                  <button class="edit">Edit</button>
+                  <button class="delete">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+        
 
          
     </div>    
@@ -404,12 +399,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"4eBYJ":[function(require,module,exports) {
+})({"1w47q":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d751713988987e9331980363e24189ce";
-module.bundle.HMR_BUNDLE_ID = "9cadbb7dc97ac1558027be16e22d03f9"; // @flow
+module.bundle.HMR_BUNDLE_ID = "edf3fb81355be70abb63a219ecba76b4"; // @flow
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE */ /*::
 import type {
   HMRAsset,
@@ -644,11 +639,12 @@ function hmrAcceptRun(bundle/*: ParcelRequire */ , id/*: string */ ) {
     acceptedAssets[id] = true;
 }
 
-},{}],"15Xdb":[function(require,module,exports) {
+},{}],"7MOUU":[function(require,module,exports) {
 
-},{}]},["4eBYJ","15Xdb"], "15Xdb", "parcelRequirec526")
+},{}]},["1w47q","7MOUU"], "7MOUU", "parcelRequirec526")
 
 </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     
 </body>
 
